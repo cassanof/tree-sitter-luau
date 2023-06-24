@@ -162,6 +162,10 @@
         "named": true
       },
       {
+        "type": "packtype",
+        "named": true
+      },
+      {
         "type": "singleton",
         "named": true
       },
@@ -1151,6 +1155,21 @@
     }
   },
   {
+    "type": "packtype",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "param",
     "named": true,
     "fields": {},
@@ -1385,11 +1404,30 @@
     }
   },
   {
-    "type": "typepack",
+    "type": "typelist",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        },
+        {
+          "type": "variadic",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "typepack",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
       "required": false,
       "types": [
         {
@@ -1397,7 +1435,7 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "typelist",
           "named": true
         },
         {

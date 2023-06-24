@@ -2523,8 +2523,29 @@
         {
           "type": "SYMBOL",
           "name": "untype"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "packtype"
         }
       ]
+    },
+    "packtype": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "type"
+          },
+          {
+            "type": "STRING",
+            "value": "..."
+          }
+        ]
+      }
     },
     "singleton": {
       "type": "CHOICE",
@@ -2606,7 +2627,7 @@
         ]
       }
     },
-    "_typelist": {
+    "typelist": {
       "type": "PREC_DYNAMIC",
       "value": 1,
       "content": {
@@ -2766,7 +2787,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_typelist"
+              "name": "typelist"
             },
             {
               "type": "BLANK"
@@ -3811,7 +3832,7 @@
   "conflicts": [
     [
       "_fntype_param",
-      "_typelist"
+      "typelist"
     ],
     [
       "_fntype_param",
@@ -3819,7 +3840,7 @@
     ],
     [
       "_fntype_param",
-      "_typelist",
+      "typelist",
       "wraptype"
     ],
     [

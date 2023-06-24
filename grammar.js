@@ -287,7 +287,8 @@ module.exports = grammar({
       $.tbtype,
       $.singleton,
       $.bintype,
-      $.untype),
+      $.untype,
+      $.packtype),
     /*
     simpletype: $ => choice(
       $._type_nil,
@@ -297,13 +298,14 @@ module.exports = grammar({
       $._type_typeof,
       $._type_func,
       $._type_table),*/
+    packtype: $ => prec(2, seq($.type, "...")),
     singleton: $ => choice($.string, $.nil, $.boolean),
     namedtype: $ => prec.right(PREC.TYPEPARAM, seq(
       optional(seq(field("module", $.name), ".")),
       $.name,
       optional(seq("<", $._typeparamlist, ">")))),
 
-    _typelist: $ => prec.dynamic(1, _list_vrd($.type, $._typelist_vrd, ",")),
+    typelist: $ => prec.dynamic(1, _list_vrd($.type, $._typelist_vrd, ",")),
     /*
     _typelist: $ => prec.dynamic(1,
       choice(
@@ -320,7 +322,7 @@ module.exports = grammar({
     _typeparamlist: $ => _list_strict($.typeparam, ","),
 
     typepack: $ => choice($._typepack_wrap, $._typepack_vrd, $._typepack_gen),
-    _typepack_wrap: $ => seq("(", optional($._typelist), ")"),
+    _typepack_wrap: $ => seq("(", optional($.typelist), ")"),
     _typepack_vrd: $ => $.variadic,
     _typepack_gen: $ => $.genpack,
 
@@ -408,9 +410,9 @@ module.exports = grammar({
 
   supertypes: $ => [$.prefixexp, $.exp, $.statement, $.type],
   conflicts: $ => [
-    [$._fntype_param, $._typelist             ],
+    [$._fntype_param, $.typelist             ],
     [$._fntype_param,              $.wraptype],
-    [$._fntype_param, $._typelist,  $.wraptype],
+    [$._fntype_param, $.typelist,  $.wraptype],
 
     [$._typelist_vrd, $._typepack_vrd]],
 
