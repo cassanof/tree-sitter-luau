@@ -2478,7 +2478,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "type"
+                  "name": "_type_with_pack"
                 }
               ]
             },
@@ -2523,29 +2523,34 @@
         {
           "type": "SYMBOL",
           "name": "untype"
-        },
+        }
+      ]
+    },
+    "_type_with_pack": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "SYMBOL",
           "name": "packtype"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
         }
       ]
     },
     "packtype": {
-      "type": "PREC",
-      "value": 2,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "type"
-          },
-          {
-            "type": "STRING",
-            "value": "..."
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "STRING",
+          "value": "..."
+        }
+      ]
     },
     "singleton": {
       "type": "CHOICE",
@@ -2725,11 +2730,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "type"
+          "name": "typepack"
         },
         {
           "type": "SYMBOL",
-          "name": "typepack"
+          "name": "type"
         }
       ]
     },

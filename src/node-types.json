@@ -162,10 +162,6 @@
         "named": true
       },
       {
-        "type": "packtype",
-        "named": true
-      },
-      {
         "type": "singleton",
         "named": true
       },
@@ -1179,6 +1175,10 @@
       "types": [
         {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "packtype",
           "named": true
         },
         {
